@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Precios</title>
+    </head>
+    <body>
+        <h4>Añade los siguientes datos</h4>
+        <label for="prodcutoA"> Precio del producto A</label>
+        <input type="number" id="productoA">
+        <br>
+        <label> Precio del producto B</label>
+        <input type="number" id="productoB">
+        <br>
+        <label> Cantidad del producto C</label>
+        <input type="number" id="productoC">
+        <br>
+        <p id = "resultado"></p>
+        <script>
+            function calculoIngreso(){
+                const prodcutoA = parseFloat(document.getElementById("productoA").value);
+                const prodcutoB = parseFloat(document.getElementById("productoB").value);
+                const prodcutoC = parseFloat(document.getElementById("productoC").value);
+                let resultado;
+                if(prodcutoA == prodcutoB && !isNaN(prodcutoC)){
+                    resultado = (prodcutoA + prodcutoB)*prodcutoC;
+                    document.getElementById("resultado").textContent ="Resultado: "+resultado;
+                }else if(prodcutoA != prodcutoB && !isNaN(prodcutoC)){
+                    document.getElementById("resultado").textContent ="Los precios no son iguales. No se puede calcular el ingreso total.";
+                }else{
+                    document.getElementById("resultado").textContent ="Error, comprueba los datos introducidos.";
+                }
+            }
+        </script>
+        <button onclick="calculoIngreso()">Calcular el Ingreso</button>
+    </body>
+</html>

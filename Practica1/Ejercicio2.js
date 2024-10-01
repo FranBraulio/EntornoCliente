@@ -1,0 +1,16 @@
+console.log(`1) true*7 = ${true*7}`);
+console.log(`2) 9-false = ${9-false}`);
+console.log(`3) 9-false = ${9-true}`);
+console.log(`4) 12+"5" = ${12+ Number("5")}`);
+console.log(`5) "67"+11 = ${Number("67")+11}`);
+console.log(`6) 2*"5" = ${2*"5"}`);
+console.log(`7) "3"*5 = ${"3"*5}`);
+console.log(`8) "texto"*8 = ${"texto"*8}`);
+console.log(`9) undefined/7 = ${undefined/7}`);
+console.log(`10) false*7 = ${false*7}`);
+console.log(`11) null*6 = ${null*6}`);
+console.log(`12) Infinity-"texto" = ${Infinity-"texto"}`);
+console.log(`13) "texto"-"o" = ${"texto"-"o"}`);
+console.log(`14) NaN+4 = ${NaN+4}`);
+console.log(6+7);
+console.log(String(6)+String(7));
