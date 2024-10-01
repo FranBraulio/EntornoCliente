@@ -19,3 +19,4 @@ if(salario > 1000 && salario < 2000){
     }
 }
 document.getElementById("mensaje").textContent = "Hola, su nombre es: "+nombre+" su apellido: "+apellidos+" su salario final es: "+salario+" y su edad es: "+edad;
+

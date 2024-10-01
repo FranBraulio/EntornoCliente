@@ -13,4 +13,3 @@ if(mes == 12 && dia == 25){
 }else{
         document.getElementById("mensaje").textContent = "Aun no es navidad :v";
 }
-

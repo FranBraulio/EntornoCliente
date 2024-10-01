@@ -12,4 +12,3 @@ if(numero1 < 10 || numero2 < 10 || numero3 < 10){
     document.getElementById("mensaje").textContent = "Alguno de los números son menores a diez";
 }
 
-

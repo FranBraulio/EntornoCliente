@@ -19,4 +19,3 @@ if (!isNaN(numero) || numero > 0) {
 document.getElementById("mensaje").textContent =piramide;
 document.getElementById("title").textContent ="Ej8. Piramide";
 
-
