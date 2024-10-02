@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de Palíndromos</title>
+</head>
+<body>
+
+    <h1>Verificador de Palíndromos</h1>
+    <div id="resultado"></div>
+    
+    <script>
+        let frase = prompt("Añade la frase");
+        let arrayFrase = frase.split("");
+        let arrayFraseReverse = arrayFrase.reverse;
+
+        for(let i = 0; i < arrayFrase.length; i++){
+            for(let j = arrayFraseReverse.length; j > 0; j--){
+                if(arrayFrase[i] != arrayFraseReverse[j]){
+                    //no funciona
+                    document.getElementById("resultado").innerHTML = `"${frase}" no es un palíndromo.`;
+                }else{
+                    //No funciona
+                    document.getElementById("resultado").innerHTML = `"${frase}" si es un palíndromo.`;
+
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
