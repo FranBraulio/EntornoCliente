@@ -8,25 +8,18 @@
 <body>
 
     <h1>Verificador de Palíndromos</h1>
-    <div id="resultado"></div>
     
     <script>
-        let frase = prompt("Añade la frase");
-        let arrayFrase = frase.split("");
-        let arrayFraseReverse = arrayFrase.reverse;
-
-        for(let i = 0; i < arrayFrase.length; i++){
-            for(let j = arrayFraseReverse.length; j > 0; j--){
-                if(arrayFrase[i] != arrayFraseReverse[j]){
-                    //no funciona
-                    document.getElementById("resultado").innerHTML = `"${frase}" no es un palíndromo.`;
-                }else{
-                    //No funciona
-                    document.getElementById("resultado").innerHTML = `"${frase}" si es un palíndromo.`;
-
-                }
-            }
-        }
+    let frase = prompt("Escribe aqui la frase");
+    let arrayFrase = frase.split(""); // Convierte la frase en un array de caracteres
+    let arrayFraseReverse = arrayFrase.reverse().join(""); // Inviertes el array y luego lo unes en una cadena
+    
+    // Comparas la frase original con la frase invertida
+    if(frase == arrayFraseReverse) {
+        document.write(`"${frase}" sí es un palíndromo.`);
+    } else {
+        document.write(`"${frase}" no es un palíndromo.`);
+    }
     </script>
 
 </body>
