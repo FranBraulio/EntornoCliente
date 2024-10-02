@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Colores</title>
+    </head>
+    <body>
+        <h1>Colores disponibles</h1>
+        <script>
+            //Con arrays
+        let nombresColores = ['Naranja', 'Lima', 'Turquesa', 'Rosa', 'Rojo'];
+        let codigosColores = ['#F39C12', '#C0F312', '#12F3E5', '#F312AF', '#F31212'];
+
+        for (var i = 0; i < nombresColores.length; i++) {
+            document.write(`<p style="color: ${codigosColores[i]}">${nombresColores[i]}: ${codigosColores[i]}</p>`);
+        }
+            //Con mapas
+            /*
+            let colores = {
+                "#F39C12": "Naranja",
+                "#C0F312": "Lima",
+                "#12F3E5": "Turquesa",
+                "#F312AF": "Rosa",
+                "#F31212": "Rojo"
+            };
+
+            function mostrarColores() {
+                for (let codigoColor in colores) {
+                    let nombreColor = colores[codigoColor];
+                    document.write(`<p style="color: ${codigoColor}">${nombreColor}: ${codigoColor}</p>`);
+                }
+            }
+
+            mostrarColores();
+            */
+        </script>
+    </body>
+</html>
