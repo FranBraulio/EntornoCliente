@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La loteria que no entiendo</title>
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Loter%C3%ADa_Nacional.svg/1200px-Loter%C3%ADa_Nacional.svg.png" type="image/png"> <!-- Favicon -->
+
+    <script>
+
+        function generarNumeros() {
+            lotteryNumbers = [];
+            while (lotteryNumbers.length < 5) {
+                let num = Math.floor(Math.random() * 10) + 1;
+                if (!lotteryNumbers.includes(num)) {
+                    lotteryNumbers.push(num);
+                }
+            }
+        }
+
+        function comprobarNumeroInsertado() {
+            let userGuess = document.getElementById("guess").value;
+            let resultMessage = "";
+            let position = lotteryNumbers.indexOf(parseInt(userGuess));
+
+            if (position !== -1) {
+                resultMessage = `¡Correcto! El número ${userGuess} está en la posición ${position + 1}.`;
+            } else {
+                resultMessage = `El número ${userGuess} no está en los números de la lotería.`;
+            }
+
+            document.getElementById("result").innerText = resultMessage;
+
+        }
+
+        window.onload = function() {
+            generarNumeros();
+        };
+    </script> 
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            margin: 0;
+            border-radius: 5px;
+        }
+
+        p {
+            color: #333;
+            font-size: 18px;
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+
+        label, input, button {
+            font-size: 18px;
+        }
+
+        input {
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin-right: 10px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #result {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+        img {
+            margin-top: 20px;
+            width: 150px;
+        }
+    </style>
+</head>
+<body>
+    <h1>¡Adivina los números de la lotería!</h1>
+    <p>Intenta adivinar los 5 números de la lotería (del 1 al 10).</p>
+    <div class="container">
+        <label for="guess">Introduce un número:</label>
+        <input type="number" id="guess" min="1" max="10">
+        <button id="checkButton" onclick="comprobarNumeroInsertado()">Comprobar</button>
+    </div>
+    <p id="result"></p>
+    <img src="https://casorientacion1.wordpress.com/wp-content/uploads/2015/06/imagenes-de-te-deseo-mucha-suerte-3.gif">
+
+</body>
+</html>
