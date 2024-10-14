@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frecuencia de Números Aleatorios</title>
+</head>
+<body>
+    <h1>Demostración de la hipótesis de frecuencias</h1>
+    <p>Las frecuencias de obtención de cada número son:</p>
+    <ul id="frecuencias"></ul>
+
+    <script>
+    function configMap(mapa){
+        // Crear un Map para almacenar las frecuencias de cada número
+        
+        // Inicializamos las claves (números del 1 al 10) con valor 0
+        for (let i = 1; i <= 10; i++) {
+            mapa.set(i, 0);
+        }
+        return mapa;
+    }
+
+    
+    let frecuencias = new Map();
+    configMap(frecuencias);
+    // Realizamos 10,000 iteraciones para generar números aleatorios entre 1 y 10
+    for (let i = 0; i < 10000; i++) {
+        let numeroAleatorio = Math.floor(Math.random() * 10) + 1;
+
+        // Asociamos cada numero aleatorio a la frecuencia
+        frecuencias.set(numeroAleatorio, frecuencias.get(numeroAleatorio) + 1);
+    }
+
+    // Seleccionamos el elemento <ul> donde mostraremos los resultados
+    let listaFrecuencias = document.getElementById('frecuencias');
+
+    // Iteramos sobre el Map y mostramos cada resultado en la página
+    frecuencias.forEach((frecuencia, numero) => {
+        let item = document.createElement('li');
+        item.textContent = `Número ${numero}: ${frecuencia}.`;
+        listaFrecuencias.appendChild(item);
+    });
+
+    </script>
+</body>
+</html>
