@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web educa con mates</title>
+</head>
+<body>
+    <h1>Numeros primos del 1 al 1000</h1>
+    <p>Los numeros primos son:</p>
+    <ul id="lista"></ul>
+
+    <script src="Ejercicio3.js"></script>
+    <script>
+        let lista = document.getElementById('lista');
+        for(let i = 1; i < 1000; i++){
+            if(esPrimo(i)){
+                const li = document.createElement('li');
+                li.textContent = i;
+                lista.appendChild(li);
+            }
+        }
+    </script>
+</body>
+</html>
