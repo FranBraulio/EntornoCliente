@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recopilador de Palabras</title>
+</head>
+<body>
+    <h1>Introduce palabras</h1>
+    <p id="resultado"></p>
+    <script>
+        (function recolectarPalabras() {
+            let palabras = new Set();  // Uso una coleccion para evitar duplicados
+            let palabra;
+
+            do {
+                palabra = prompt("Introduce una palabra (deja vacío para finalizar):");
+
+                if (palabra !== null && palabra.trim() !== "") {
+                    palabras.add(palabra.trim());
+                }
+
+            } while (palabra !== null && palabra.trim() !== "");
+
+            let listaPalabras  = [...palabras];  // Convierto la colección a un array
+            listaPalabras.sort().reverse();  // Ordenamos de Z a A -> el .sort los ordena de la A a Z y luego con el .reverse se invierte
+
+            document.getElementById("resultado").innerText = "Palabras: " + listaPalabras.join(", ");
+        })();
+    </script>
+</body>
+</html>
