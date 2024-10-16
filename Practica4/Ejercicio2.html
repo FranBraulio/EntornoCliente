@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla Dinámica</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        td {
+            border: 1px solid violet;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <input type="number" id="filas" placeholder="Número de filas" />
+    <input type="number" id="columnas" placeholder="Número de columnas" />
+    <button onclick="crearTabla()">Generar Tabla</button>
+
+    <div id="tabla-container"></div>
+
+    <script>
+        // Función que genera la tabla dinámica
+        function crearTabla(filas, columnas) {
+            // Obtener los valores de filas y columnas desde la entrada del usuario, si están presentes
+            const inputFilas = document.getElementById("filas").value;
+            const inputColumnas = document.getElementById("columnas").value;
+
+            // Si se proporcionan valores por entrada, los usamos, si no, tomamos los valores por defecto
+            if (inputFilas) {
+                filas = parseInt(inputFilas);
+            } else {
+                filas = 10;
+            }
+
+            if (inputColumnas) {
+                columnas = parseInt(inputColumnas);
+            } else {
+                columnas = 4;
+            }
+
+            // Obtener el contenedor donde se insertará la tabla
+            const contenedor = document.getElementById("tabla-container");
+            contenedor.innerHTML = ""; // Limpiar cualquier tabla existente
+
+            // Crear la tabla
+            const tabla = document.createElement("table");
+
+            // Generar filas y columnas
+            for (let i = 0; i < filas; i++) {
+                const fila = document.createElement("tr");
+                for (let j = 0; j < columnas; j++) {
+                    const celda = document.createElement("td");
+                    celda.textContent = `Fila ${i + 1}, Columna ${j + 1}`;
+                    fila.appendChild(celda);
+                }
+                tabla.appendChild(fila);
+            }
+
+            // Añadir la tabla al contenedor
+            contenedor.appendChild(tabla);
+        }
+
+        crearTabla();
+    </script>
+
+</body>
+</html>
