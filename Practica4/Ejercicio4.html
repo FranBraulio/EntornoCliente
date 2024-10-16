@@ -9,14 +9,19 @@
     <h1>Numeros primos del 1 al 1000</h1>
     <p>Los numeros primos son:</p>
     <ul id="lista"></ul>
-
+    <!--Llamamos al ejercicio 3-->
     <script src="Ejercicio3.js"></script>
     <script>
         let lista = document.getElementById('lista');
-        for(let i = 1; i < 1000; i++){
+        //Bucle que recorre todos los numeros del 1 al 1000
+        for(let i = 1; i <= 1000; i++){
+            //Usamos la funcion del Ejercicio3 para comprobar si es primo
             if(esPrimo(i)){
+                //Se crea el li de la lista de html
                 const li = document.createElement('li');
+                //Se almacena el numero primo
                 li.textContent = i;
+                //Se añade el li con el numero almacenado a la lista
                 lista.appendChild(li);
             }
         }

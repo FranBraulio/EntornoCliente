@@ -23,7 +23,7 @@
             } while (palabra !== null && palabra.trim() !== "");
 
             let listaPalabras  = [...palabras];  // Convierto la colección a un array
-            listaPalabras.sort().reverse();  // Ordenamos de Z a A -> el .sort los ordena de la A a Z y luego con el .reverse se invierte
+            listaPalabras.sort().reverse();  // Ordeno de Z a A -> el .sort las ordena de la A a Z y luego con el .reverse la invierte
 
             document.getElementById("resultado").innerText = "Palabras: " + listaPalabras.join(", ");
         })();

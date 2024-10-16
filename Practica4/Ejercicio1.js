@@ -1,6 +1,10 @@
+//Funcion que cuenta los numeros Par
 function findPar(numeros){
+    //Contador de numeros pares
     let cantNumeros = 0;
+    //Bucle para recorrer todos los numeros pasados como parametro
     for (let elemento of numeros){
+        //Si el resto del elemento dividio 2 es = 0, significa que es par
         if(elemento % 2==0){
             cantNumeros++;
         }
