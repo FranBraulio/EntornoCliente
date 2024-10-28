@@ -1,0 +1,35 @@
+Descripción:
+    El operador instanceof se usa para verificar si un objeto es una instancia de una clase o de una función constructora específica.
+    La sintaxis básica es:
+        objeto instanceof Constructor
+
+Cómo funciona:
+    Si el objeto fue creado por esa función constructora o por una de sus "subclases" instanceof devuelve true.
+    Si no, devuelve false.
+
+    Ejemplo:
+
+    // Definimos una función constructora llamada Animal
+    function Animal(nombre) {
+    this.nombre = nombre;
+    }
+
+    // Creamos una instancia de Animal
+    const perro = new Animal('Rex');
+
+    // Verificamos si 'perro' es una instancia de 'Animal'
+    console.log(perro instanceof Animal); // true
+
+También se puede usar con clases en ES6, ya que las clases son esencialmente una forma de crear funciones constructoras.
+
+class Persona {
+  constructor(nombre) {
+    this.nombre = nombre;
+  }
+}
+
+const persona = new Persona('Juan');
+console.log(persona instanceof Persona); // true
+
+Este operador es útil para asegurarse de que un objeto sea de un tipo específico antes de aplicarle ciertas operaciones.
+Se suele utilizar cuando necesitas confirmar el tipo de un objeto en tiempo de ejecución.

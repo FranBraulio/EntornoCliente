@@ -35,7 +35,7 @@ console.log(libro1);
 //Modifica una propiedad del objeto
 libro1.autor = "Fran";
 //Recorre las propiedades de objeto y muéstralas
-//No hace falta hacer el if con TypeOf porque eso solo hace falta si el objeto es literal 
+//No hace falta hacer el if con typeof porque eso solo hace falta si el objeto es literal 
 for (let propiedades in libro1){
     console.log(`${propiedades} = ${libro1[propiedades]}`);
 }
