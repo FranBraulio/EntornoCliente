@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Implementacion del icono-->
+    <link rel="icon" href="icono.ico" type="image/x-icon">
+    <!--Implementacion de la fuente-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Tiny5&display=swap" rel="stylesheet">
+    <title>Ejercicio 5</title>
+</head>
+<style>
+    body{
+        /*Implementar la fuente añadida*/
+        text-shadow: rgb(255, 255, 255) 1px 0 10px;
+        font-family: "Tiny5", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        text-align: center;
+        /*Cambio de fondo*/
+        background-image: url(https://wallpapers.com/images/hd/minecraft-grass-b3ruyee6ffjnguj2.jpg);
+
+    }
+
+    h1{   
+        font-size: 70px;
+    }
+
+    #contadorMostrado{
+        font-size: 50px;
+    }
+
+    button{
+        /*Implementar la fuente añadida en el boton*/
+        font-size: 25px;
+        box-shadow: rgb(7, 255, 48) 1px 0 10px;
+        background-color: rgb(2, 94, 40);
+        color: white;
+        font-family: "Tiny5", sans-serif;
+        font-style: normal;
+    }
+
+    
+</style>
+<body>
+    <h1>Contador</h1>
+    <p id="contadorMostrado">0</p>
+    <button id="incrementarContador">Incrementar</button>
+    <script>
+        class Contador{
+            constructor(){
+                this.conteo = 0;
+            }
+
+            incrementar(){
+                this.conteo++;
+            }
+
+            mostrarValor(){
+                return this.conteo;
+            }
+        }
+
+        let contador = new Contador;
+        let contadorEnPantalla = document.getElementById("contadorMostrado");
+        let contadorInrementativo = document.getElementById("incrementarContador");
+        contadorInrementativo.addEventListener("click", () => {
+            contador.incrementar();
+            contadorEnPantalla.textContent = contador.mostrarValor();
+        });
+    </script>
+</body>
+</html>
