@@ -30,27 +30,10 @@ let punto = {
         } else{
             return 0;
         }
-    },
-
-    //Funcion arrow
-    //No uso this para que no de error
-    // esto (**) === (^) elevado a
-    distancia: () => {return Math.sqrt(punto.x ** 2 + punto.y ** 2)},
-
-    mostrar_coordenadas : function(){
-        return `(${this.x},${this.y},${this.z})`;
-    },
-
-    mostrar_cuadrante : function(){
-        return `(Esta en el cuadrante: ${this.cuadrante})`;
     }
 }
+//Convertir el objeto a formato JSON
+let jsonString = JSON.stringify(punto, null, 2);
 
-punto.x = 2;
-punto.y;
-punto.z = 3;
-console.log(punto.distancia());
-console.log(punto.mostrar_coordenadas());
-console.log(punto.mostrar_cuadrante());
-
-
+//Mostrar el JSON por consola
+console.log(jsonString);
