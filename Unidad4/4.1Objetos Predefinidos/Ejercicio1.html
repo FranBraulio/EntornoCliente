@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego Online</title>
+</head>
+<body>
+    <h1>Adivina el Número</h1>
+    <p>Estoy pensando en un número entre 1 y 10. ¿Puedes adivinar cuál es?</p>
+    <input type="number" id="numIntroducido" placeholder="Escribe tu número aquí" min="1" max="10">
+    <button id="boton">Adivinar</button>
+    <p id="feedback"></p>
+    <div id="resultado"></div>
+
+    <script>
+        function getRandomInt(min, max) {
+            let minCeiled = Math.ceil(min);
+            let maxFloored = Math.floor(max);
+            return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
+        }
+
+        const numRandom = getRandomInt(1, 11);
+        let intentos = 0;
+        const maxIntentos = 5;
+
+        const feedback = document.getElementById('feedback');
+        const resultado = document.getElementById('resultado');
+        const numeroIntroducido = document.getElementById('numIntroducido');
+        const adivinar = document.getElementById('boton');
+        console.log(numRandom);
+
+        boton.addEventListener('click', () => {
+            const numeroIntento = parseInt(numeroIntroducido.value);
+            if (isNaN(numeroIntento) || numeroIntento < 1 || numeroIntento > 10) {
+                feedback.textContent = "Por favor, ingresa un número válido entre 1 y 10.";
+                return;
+            }
+
+            intentos++;
+            if (numeroIntento === numRandom) {
+                resultado.textContent = "¡Has ganado! El número era " + numRandom;
+                feedback.textContent = "Has acertado en el intento " + intentos;
+                boton.disabled = true;
+            } else if (intentos >= maxIntentos) {
+                resultado.textContent = "¡Has perdido! El número era " + numRandom;
+                feedback.textContent = "";
+                boton.disabled = true;
+            } else {
+                feedback.textContent = `Fallaste. Te quedan ${maxIntentos - intentos} intentos.`;
+            }
+
+            numeroIntroducido.value = '';
+        });
+    </script>
+</body>
+</html>

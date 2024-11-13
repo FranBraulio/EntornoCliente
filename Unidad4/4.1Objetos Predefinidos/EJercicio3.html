@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcula el Día de la Semana</title>
+</head>
+<body>
+    <h1>¿Qué día de la semana naciste?</h1>
+    <p>Ingresa tu fecha de nacimiento en formato dd/mm/yyyy:</p>
+    <input type="text" id="fechaNacimiento" placeholder="Ejemplo: 03/02/1990">
+    <button onclick="mostrarDiaSemana()">Calcular</button>
+    <p id="resultado"></p>
+
+    <script>
+        function calcularDiaSemana(fechaNacimiento) {
+            // Array con los días de la semana en español
+            const diasSemana = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+
+            // Convertir la fecha ingresada en un objeto Date
+            const partesFecha = fechaNacimiento.split("/");
+            //ParesInt(string, base);
+            //el 10 es la base del Int por lo que es decimal.
+            const dia = parseInt(partesFecha[0], 10);
+            const mes = parseInt(partesFecha[1], 10) - 1; // Los meses en JavaScript empiezan en 0 es decir van el 0 al 11
+            const anio = parseInt(partesFecha[2], 10);
+
+            const fecha = new Date(anio, mes, dia);
+
+            // Validar si la fecha es válida
+            if (isNaN(fecha.getTime())) {
+                return "Fecha inválida. Por favor, ingresa una fecha válida.";
+            }
+
+            // Obtener el día de la semana
+            const diaSemana = fecha.getDay();
+
+            // Retornar el nombre del día
+            return diasSemana[diaSemana];
+        }
+
+        function mostrarDiaSemana() {
+            const fechaNacimiento = document.getElementById("fechaNacimiento").value;
+            const resultado = calcularDiaSemana(fechaNacimiento);
+            document.getElementById("resultado").textContent = `Naciste un ${resultado}.`;
+        }
+    </script>
+</body>
+</html>
