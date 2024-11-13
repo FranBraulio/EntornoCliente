@@ -39,6 +39,40 @@ class Factura {
     }
 }
 
+class FacturaDetallada extends Factura {
+    constructor(idCliente) {
+        super(idCliente);
+        this.articulos = []; // Array para almacenar los artículos
+    }
+
+    //Metodo para añadir articulo
+    añadirArticulo(nombre, precio) {
+        this.articulos.push({ nombre, precio });
+    }
+
+    // Método para imprimir la factura detallada
+    imprimirFacturaDetallada(clientsList) {
+        const cliente = clientsList[this.idCliente];
+        console.log(`Factura Detallada:
+        Id Factura: ${this.idFactura}
+        Cliente: ${cliente.nombre}
+        Email: ${cliente.email}
+        Teléfono: ${cliente.telefono}
+        Estado: ${this.estado}
+        Artículos:`);
+
+        let totalArticulos = 0;
+        this.articulos.forEach((articulo, index) => {
+            console.log(`${index + 1}. ${articulo.nombre} - ${articulo.precio}€`);
+            totalArticulos += articulo.precio;
+        });
+
+        console.log(`Total Artículos: ${totalArticulos}€
+        Total a Pagar: ${totalArticulos}€`);
+    }
+}
+
+
 // Crear lista de clientes
 const clientes = [
     new Cliente("Juan", "juan@mail.com", "634567187"),
@@ -53,7 +87,6 @@ for(let i = 0; i < clientes.length; i++){
 
 // Crear factura para el primer cliente (Juan)
 const facturaJuan = new Factura(0, 300); // El idCliente coincide con la posición en la lista de clientes
-const facturaJuan2 = new Factura(0, 100); // El idCliente coincide con la posición en la lista de clientes
 
 // Imprimir la factura de Juan (estado inicial: pendiente)
 facturaJuan.imprimir(clientes);
@@ -61,7 +94,22 @@ facturaJuan.imprimir(clientes);
 // Cobrar la factura de Juan y volver a imprimir
 facturaJuan.cobrar();
 facturaJuan.imprimir(clientes);
-facturaJuan2.imprimir(clientes);
+
+// Crear una factura detallada para el primer cliente
+const facturaDetalladaJuan = new FacturaDetallada(0);
+
+// Añadir artículos a la factura
+facturaDetalladaJuan.añadirArticulo("Monitor", 150);
+facturaDetalladaJuan.añadirArticulo("Teclado", 30);
+facturaDetalladaJuan.añadirArticulo("Ratón", 20);
+
+// Imprimir la factura detallada
+facturaDetalladaJuan.imprimirFacturaDetallada(clientes);
+
+// Cobrar la factura y volver a imprimir
+facturaDetalladaJuan.cobrar();
+facturaDetalladaJuan.imprimirFacturaDetallada(clientes);
+
 
 
 
