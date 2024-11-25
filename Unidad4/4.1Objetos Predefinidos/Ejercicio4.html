@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fecha Formateada</title>
+</head>
+<body>
+    <h1>Fecha Actual</h1>
+    <p><h2>Día:</h2> <span id="dia"></span></p>
+    <p><h2>Nombre del día:</h2> <span id="sem"></span></p>
+    <p><h2>Mes:</h2> <span id="mes"></span></p>
+    <p><h2>Año:</h2> <span id="año"></span></p>
+
+    <script>
+        function obtenerFechaFormateada(fecha) {
+            // Obtiene el día del mes
+            const dia = fecha.getDate();
+
+            // Obtiene el nombre del día de la semana
+            const diasSemana = {
+                0: "Domingo", 1: "Lunes", 2: "Martes", 3: "Miércoles",
+                4: "Jueves", 5: "Viernes", 6: "Sábado"
+            };
+            const sem = diasSemana[fecha.getDay()];
+
+            // Obtiene el nombre del mes
+            const meses = {
+                0: "Enero", 1: "Febrero", 2: "Marzo", 3: "Abril",
+                4: "Mayo", 5: "Junio", 6: "Julio", 7: "Agosto",
+                8: "Septiembre", 9: "Octubre", 10: "Noviembre", 11: "Diciembre"
+            };
+            const mes = meses[fecha.getMonth()];
+
+            // Obtiene el año
+            const año = fecha.getFullYear();
+
+            // Devuelve el objeto con los datos solicitados
+            return { dia, sem, mes, año };
+        }
+
+        // Obtener la fecha actual y formatearla
+        const fechaActual = new Date();
+        const fechaFormateada = obtenerFechaFormateada(fechaActual);
+
+        // Mostrar en el HTML
+        document.getElementById("dia").textContent = fechaFormateada.dia;
+        document.getElementById("sem").textContent = fechaFormateada.sem;
+        document.getElementById("mes").textContent = fechaFormateada.mes;
+        document.getElementById("año").textContent = fechaFormateada.año;
+    </script>
+</body>
+</html>
+

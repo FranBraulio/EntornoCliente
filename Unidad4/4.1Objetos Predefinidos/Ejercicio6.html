@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diferencia de Días entre Fechas</title>
+</head>
+<body>
+    <h2>Calcular Días entre Fechas</h2>
+
+    <label for="fecha1">Fecha (dd-mm-yyyy):</label>
+    <input type="text" id="fecha1" placeholder="formato: dd-mm-yyyy">
+
+    <label for="fecha2">Fecha a comparar (dd-mm-yyyy):</label>
+    <input type="text" id="fecha2" placeholder="formato: dd-mm-yyyy">
+
+    <button onclick="mostrarDiferencia()">Calcular Días</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        function calcularDiasEntreFechas(fecha1, fecha2) {
+            // Convertir las fechas de string a objetos Date
+            const [dia1, mes1, año1] = fecha1.split("-").map(Number);
+            const [dia2, mes2, año2] = fecha2.split("-").map(Number);
+
+            const date1 = new Date(año1, mes1 - 1, dia1);
+            const date2 = new Date(año2, mes2 - 1, dia2);
+
+            // Calcular la diferencia en milisegundos y convertir a días
+            const diferenciaMs = Math.abs(date2 - date1);
+            const diferenciaDias = Math.ceil(diferenciaMs / (1000 * 60 * 60 * 24));
+
+            return diferenciaDias;
+        }
+
+        function mostrarDiferencia() {
+            const fecha1 = document.getElementById("fecha1").value;
+            const fecha2 = document.getElementById("fecha2").value;
+
+            if (fecha1 && fecha2) {
+                const dias = calcularDiasEntreFechas(fecha1, fecha2);
+                document.getElementById("resultado").textContent = `Hay ${dias} días entre ${fecha1} y ${fecha2}.`;
+            } else {
+                document.getElementById("resultado").textContent = "Por favor, introduce ambas fechas en el formato dd-mm-yyyy.";
+            }
+        }
+    </script>
+</body>
+</html>

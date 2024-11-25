@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formato de Fecha y Hora</title>
+</head>
+<body>
+    <h1>Formatos de Fecha y Hora</h1>
+    <p><h2>dd/mm/yyyy</h2> <span id="formato1"></span></p>
+    <p><h2>mm/dd/yy</h2> <span id="formato2"></span></p>
+    <p><h2>con día de la semana</h2> <span id="formato3"></span></p>
+    <p><h2>detallada hora</h2> <span id="formato4"></span></p>
+
+    <script>
+        // Crear un nuevo objeto de fecha
+        const fechaActual = new Date();
+
+        // Formato dd/mm/yyyy
+        const formato1 = fechaActual.getDate().toString().padStart(2, '0') + '/' +
+                         (fechaActual.getMonth() + 1).toString().padStart(2, '0') + '/' +
+                         fechaActual.getFullYear();
+        document.getElementById("formato1").textContent = formato1;
+
+        // Formato mm/dd/yy
+        const formato2 = (fechaActual.getMonth() + 1).toString().padStart(2, '0') + '/' +
+                         fechaActual.getDate().toString().padStart(2, '0') + '/' +
+                         fechaActual.getFullYear().toString().slice(-2);
+        document.getElementById("formato2").textContent = formato2;
+
+        // Formato con día de la semana
+        const diasSemana = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+        const diaSemana = diasSemana[fechaActual.getDay()];
+        const formato3 = `${diaSemana}: ${formato2}`;
+        document.getElementById("formato3").textContent = formato3;
+
+        // Formato detallado con hora, minutos y segundos
+        const horas = fechaActual.getHours().toString().padStart(2, '0');
+        const minutos = fechaActual.getMinutes().toString().padStart(2, '0');
+        const segundos = fechaActual.getSeconds().toString().padStart(2, '0');
+        const formato4 = `Hora: ${horas} Minutos: ${minutos} Segundos: ${segundos}`;
+        document.getElementById("formato4").textContent = formato4;
+    </script>
+</body>
+</html>
