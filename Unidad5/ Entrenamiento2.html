@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Prueba</h1>
+    <script>
+       // Declaramos una variable para almacenar la información concatenada
+let navigatorInfo = "";
+
+// Concatenamos la información disponible de las propiedades de navigator
+navigatorInfo += `User Agent: ${navigator.userAgent}\n`;
+navigatorInfo += `Cookies Enabled: ${navigator.cookieEnabled}\n`;
+navigatorInfo += `Language: ${navigator.language}\n`;
+navigatorInfo += `Online: ${navigator.onLine}\n`;
+
+// Verificamos si algunas propiedades están disponibles antes de usarlas
+if (navigator.geolocation) {
+    navigatorInfo += "Geolocation: Supported\n";
+} else {
+    navigatorInfo += "Geolocation: Not supported\n";
+}
+
+if (navigator.javaEnabled) {
+    navigatorInfo += `Java Enabled: ${navigator.javaEnabled()}\n`;
+} else {
+    navigatorInfo += "Java Enabled: Not available\n";
+}
+
+if (navigator.plugins && navigator.plugins.length > 0) {
+    navigatorInfo += `Plugins Installed: ${navigator.plugins.length}\n`;
+} else {
+    navigatorInfo += "Plugins Installed: None\n";
+}
+
+if (navigator.mimeTypes && navigator.mimeTypes.length > 0) {
+    navigatorInfo += `MIME Types Supported: ${navigator.mimeTypes.length}\n`;
+} else {
+    navigatorInfo += "MIME Types Supported: None\n";
+}
+
+if (navigator.storage) {
+    navigatorInfo += "Storage Manager: Supported\n";
+} else {
+    navigatorInfo += "Storage Manager: Not supported\n";
+}
+
+if (navigator.serviceWorker) {
+    navigatorInfo += "Service Worker: Supported\n";
+} else {
+    navigatorInfo += "Service Worker: Not supported\n";
+}
+
+// Mostramos la información por consola
+console.log(navigatorInfo);
+
+    </script>
+</body>
+</html>
