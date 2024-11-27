@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recordatorio Infinito</title>
+</head>
+<body>
+    <h1>Recordatorio con Temporizadores</h1>
+    <script>
+        // Función para mostrar el recordatorio al usuario
+        let contador = 1;
+        function iniciarRecordatorio() {
+            // Iniciamos un intervalo que se ejecuta cada 5 segundos
+            const intervaloId = setInterval(() => {
+                // Mostramos un cuadro de confirmación al usuario
+                const continuar = confirm("¿Quieres seguir recibiendo recordatorios?");
+
+                // Si el usuario pulsa Cancelar, detenemos el intervalo
+                if (!continuar) {
+                    clearInterval(intervaloId); // Detenemos el intervalo
+                    alert("Los recordatorios han sido desactivados.");
+                }
+            }, 5000); // Intervalo de 5000 ms (5 segundos)
+        }
+
+        // Llamamos a la función para iniciar el recordatorio
+        iniciarRecordatorio();
+    </script>
+</body>
+</html>

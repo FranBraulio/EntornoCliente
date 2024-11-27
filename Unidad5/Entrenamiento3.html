@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información de Pantalla</title>
+</head>
+<body>
+    <h1>Información de Pantalla</h1>
+    <script>
+        // Declaramos una variable para almacenar la información concatenada
+        let infoPantalla = "";
+
+        // Concatenamos la información disponible de las propiedades de screen
+        infoPantalla += `Primera coordenada superior utilizable (availTop): ${screen.availTop || "No disponible"}\n`;
+        infoPantalla += `Primera coordenada izquierda utilizable (availLeft): ${screen.availLeft || "No disponible"}\n`;
+        infoPantalla += `Altura utilizable de la pantalla (availHeight): ${screen.availHeight}px\n`;
+        infoPantalla += `Anchura utilizable de la pantalla (availWidth): ${screen.availWidth}px\n`;
+        infoPantalla += `Profundidad de color (colorDepth): ${screen.colorDepth} bits\n`;
+        infoPantalla += `Altura total de la pantalla (height): ${screen.height}px\n`;
+        infoPantalla += `Anchura total de la pantalla (width): ${screen.width}px\n`;
+        infoPantalla += `Orientación de la pantalla (orientation): ${screen.orientation?.type || "No disponible"}\n`;
+        infoPantalla += `Profundidad de bits por píxel (pixelDepth): ${screen.pixelDepth} bits\n`;
+
+        // Mostramos la información por consola
+        console.log(infoPantalla);
+    </script>
+</body>
+</html>
