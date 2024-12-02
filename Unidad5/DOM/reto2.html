@@ -37,7 +37,10 @@
     <h1>Lore ipsum</h1>
     <div class="contenedor">
     <div class="columna">
-        <p id="saludo">¡Bienvenid@!</p>
+        <div id="contenedorSaludo"> 
+            <p id="saludo">¡Bienvenid@!</p>
+        </div>
+       
         <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
             Sed porttitor tincidunt tellus. Fusce nec metus id nunc rutrum feugiat laoreet ut diam. Curabitur commodo massa sed maximus scelerisque. Donec in posuere nisl. Donec 
@@ -110,12 +113,26 @@
             nuevoParrafo2.style.fontWeight = "bold";
             document.getElementsByClassName("columna")[1].appendChild(nuevoParrafo2);
             
+
+            //Poner el nombre en el inicio
             let nombreUsuario = document.getElementById("name").value;
             let nombreUsuarioNodo = document.createTextNode(`¡Bienvenid@! ${nombreUsuario}`);
             let elemento = document.createElement("p");
             elemento.appendChild(nombreUsuarioNodo);
-            //en vez de añadir tengo que modificar
-            document.getElementById("saludo").appendChild(elemento);
+            //Nodo padre
+            let padre = document.getElementById("contenedorSaludo");
+            //Nodo hijo
+            let hijo = document.getElementById("saludo");
+            //Atributo id al elemento
+            elemento.setAttribute("id","saludo");
+            //remplazo el hijo por el elemento nuevo
+            padre.replaceChild(elemento, hijo);
+
+            //Tambien se puede hacer añadiendo el elemento al padre y borrando el hijo
+            //Al borrar solo el primer nodo que encuentra con el atributo id siempre se queda el ultimo nodo hijo creado.
+                //padre.appendChild(elemento);
+                //padre.removeChild(hijo);
+            
         }
     </script>
 </body>
