@@ -3,23 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="favicons/titular.png" type="image/x-icon">
-    <title>Lore ipsum</title>
+    <title>Document</title>
     <style>
-        div{
-            width: 50%;
-            height: 100px;
-            border-top: 2px solid #FF0000;
-            padding-left: 20px;
-            margin-bottom: 10px;
-            color: black;
+        .contenedor{
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: 10px;
         }
+        .columna{
+            width: 30%;
+            background-color: rgb(219, 219, 219);
+            padding: 10px;
+        }
+        .formulario{
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            max-width: 600px;
+        }
+        #email{
+            width: 400px;
+        }
+        #name{
+            width: 300px;
+        }
+        
     </style>
-
 </head>
 <body>
     <h1>Lore ipsum</h1>
-    <div id="contenedor">
+    <div class="contenedor">
+    <div class="columna">
+        <p id="saludo">¡Bienvenid@!</p>
         <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
             Sed porttitor tincidunt tellus. Fusce nec metus id nunc rutrum feugiat laoreet ut diam. Curabitur commodo massa sed maximus scelerisque. Donec in posuere nisl. Donec 
@@ -41,6 +59,8 @@
             lacinia id porta ornare, euismod id magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. 
             Ut et lorem mi. 
         </p>
+    </div>
+    <div class="columna">   
         <p>
             Suspendisse at odio quis quam cursus dignissim et id mi. Aenean volutpat ut metus a auctor. 
             Aliquam porta metus ex, ut gravida urna venenatis sed. Nam bibendum rhoncus ligula, at feugiat sapien. 
@@ -58,15 +78,45 @@
             Donec iaculis pulvinar nulla vel pellentesque. Morbi nec tortor ex. 
         </p>
     </div>
+    </div>
+    <div class="formulario">
+        <form>
+            <label for="name">Nombre:</label><br>
+            <input type="text" id="name"><br>
+            <label for="email">email:</label><br>
+            <input type="text" id="email"><br>
+            <label for="parrafo">parrafo:</label><br>
+            <textarea id="parrafo" cols="40" rows="5"></textarea><br>
+            <input type="button" value="Añadir párrafo" onclick="anaydeParrafo()">
+        </form>
+    </div>
     <script>
-        // let parrafos =document.querySelector("div"); Para hacerlo modificando el css
-        let parrafos = document.getElementById("contenedor"); //Para hacerlo cogiendo el html
-        parrafos.style.width = "30%";
-        parrafos.style.height = "250px";
-        parrafos.style.borderTop = "5px dashed #00FF00";
-        parrafos.style.paddingLeft = "15px";
-        parrafos.style.marginBottom = "10px";
-        parrafos.style.color = "red";
+        function leerParrafo(){
+
+        }
+        function anaydeParrafo(){
+            let texto = document.getElementById("parrafo").value;
+            let textoParrafo1 = document.createTextNode(texto);
+            let nuevoParrafo1 = document.createElement("p");
+            nuevoParrafo1.appendChild(textoParrafo1);
+            nuevoParrafo1.style.color = "red";
+            nuevoParrafo1.style.fontWeight = "bold";
+            document.getElementsByClassName("columna")[0].appendChild(nuevoParrafo1);
+
+            let textoParrafo2 = document.createTextNode(texto);
+            let nuevoParrafo2 = document.createElement("p");
+            nuevoParrafo2.appendChild(textoParrafo2);
+            nuevoParrafo2.style.color = "green";
+            nuevoParrafo2.style.fontWeight = "bold";
+            document.getElementsByClassName("columna")[1].appendChild(nuevoParrafo2);
+            
+            let nombreUsuario = document.getElementById("name").value;
+            let nombreUsuarioNodo = document.createTextNode(`¡Bienvenid@! ${nombreUsuario}`);
+            let elemento = document.createElement("p");
+            elemento.appendChild(nombreUsuarioNodo);
+            //en vez de añadir tengo que modificar
+            document.getElementById("saludo").appendChild(elemento);
+        }
     </script>
 </body>
 </html>
