@@ -1,0 +1,13 @@
+<section>
+    Manipular elementos <i>parece</i> sencillo, <br>
+    pero <s>puede</s> complicarse bastante.
+</section>
+
+<script>
+    console.log(document.getElementsByTagName("section")[0].textContent);
+    console.log(document.getElementsByTagName("section")[0].innerHTML);
+
+    document.getElementsByTagName("section")[0].textContent = "mi <u>nuevo</u> contenido"; // no lo entiende como HTML, por lo que al no interpretar muestra el texto tal cual.
+    document.getElementsByTagName("section")[0].innerHTML = "mi <u>nuevo</u> contenido";  // lo entiende como HTML, por lo que hace lo que no muestra las etiquetas.
+</script>
+
