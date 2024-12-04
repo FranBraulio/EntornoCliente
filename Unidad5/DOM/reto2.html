@@ -97,6 +97,7 @@
             <input type="button" value="Añadir párrafo" onclick="leerParrafo()">
         </form>
     </div>
+    <div id="visitas"></div>
     <script>
         function validadorCorreo(correo){
             let regExp = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -157,11 +158,40 @@
             
         }
 
-        //Apartado 7
-        window.onload = function() {
-            document.getElementById("formulario").reset();
+        
+
+        //COOKIES
+        function obtenerCookie(nombre) {
+            const cookies = document.cookie.split("; ");
+            for (let cookie of cookies) {
+                const [clave, valor] = cookie.split("=");
+                if (clave === nombre) return valor;
+            }
+            return null;
         }
 
+        // Función para gestionar las visitas
+        function gestionarVisitas() {
+            const visitasDiv = document.getElementById("visitas");
+
+            // Mostrar alerta para aceptar o rechazar cookies
+            const aceptarCookies = confirm("¿Aceptas el uso de cookies para contar las visitas?");
+            if (aceptarCookies) {
+                let visitas = obtenerCookie("visitas") || 0; // Obtener visitas de la cookie
+                visitas = parseInt(visitas) + 1; // Incrementar el contador
+                document.cookie = `visitas=${visitas}; path=/; max-age=${60 * 60 * 24 * 365}`; // Guardar cookie con 1 año de duración
+                visitasDiv.textContent = `Esta página ha sido visitada ${visitas} veces.`;
+            } else {
+                visitasDiv.textContent = "No se registrarán visitas porque rechazaste las cookies.";
+            }
+        }
+
+        // Ejecutar al cargar la página
+        window.onload = function () {
+            document.getElementById("formulario").reset();
+            gestionarVisitas();
+        };
+    
     </script>
 </body>
 </html>
