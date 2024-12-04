@@ -85,8 +85,8 @@
         </p>
     </div>
     </div>
-    <div class="formulario">
-        <form>
+    <div>
+        <form  id="formulario">
             <label for="name">Nombre:</label><br>
             <input type="text" id="name"><br>
             <label for="email">email:</label><br>
@@ -157,7 +157,10 @@
             
         }
 
-        //NO ENTIENDO EL APARTADO 7 y 8
+        //Apartado 7
+        window.onload = function() {
+            document.getElementById("formulario").reset();
+        };
 
     </script>
 </body>
