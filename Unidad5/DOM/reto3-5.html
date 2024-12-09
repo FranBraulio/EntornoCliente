@@ -98,9 +98,10 @@
             <input type="text" id="busqueda">
             <input type="button" value="Bucar" onclick="busquedaEnTexto()">
             <input type="button" value="Contar palabras" onclick="conteoPalabras()">
+            <input type="button" value="Ejercicio6" onclick="mostrarParrafos()">
         </form>
     </div>
-    
+    <p id="contador"></p>
     <div id="visitas"></div>
     <script>
         //RETO 3
@@ -143,22 +144,33 @@
             let texto = contenido.innerText;
 
             // Dividir el texto por espacios y filtrar palabras vacías
-            let palabras = texto.split(/\s+/).filter(palabra => palabra.trim().length > 0);
+            let palabras = texto.trim().split(/\s+/);
 
             // Contar las palabras
             let totalPalabras = palabras.length;
 
-            // Mostrar el resultado en un elemento nuevo o existente
-            let resultado = document.getElementById("resultado-palabras");
-            if (!resultado) {
-                resultado = document.createElement("p");
-                resultado.id = "resultado-palabras";
-                document.body.appendChild(resultado);
-            }
-            resultado.textContent = `El texto contiene un total de ${totalPalabras} palabras.`;
-}
+            // Mostrar el resultado en un elemento
+            document.getElementById("contador").innerHTML = `El texto contiene un total de ${totalPalabras} palabras.`;
+        }
 
+        //RETO 6
+        function mostrarParrafos(){
+            let parrafos = document.getElementsByTagName("p");
+            Array.from(parrafos).forEach(parrafo =>{
+                parrafo.style.display = "none";
+            });
 
+            let index = 0;
+            const intervalo = setInterval(() =>{
+                if(index < parrafos.length){
+                    parrafos[index].style.display = "block";
+                    index++;
+                }else{
+                    clearInterval(intervalo);
+                }
+            },2000);
+            
+        }
 
         function validadorCorreo(correo){
             let regExp = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
