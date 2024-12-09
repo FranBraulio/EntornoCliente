@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .contenedor{
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .columna{
+            width: 30%;
+            background-color: rgb(219, 219, 219);
+            padding: 10px;
+        }
+        .formulario{
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            max-width: 600px;
+        }
+        #mensaje-error{
+            color: red;
+        }
+        #email{
+            width: 400px;
+        }
+        #name{
+            width: 300px;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Lore ipsum</h1>
+    <div class="contenedor" id="contenido">
+    <div class="columna">
+        <div id="contenedorSaludo"> 
+            <p id="saludo">¡Bienvenid@!</p>
+        </div>
+       
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Sed porttitor tincidunt tellus. Fusce nec metus id nunc rutrum feugiat laoreet ut diam. Curabitur commodo massa sed maximus scelerisque. Donec in posuere nisl. Donec 
+            pharetra quis orci eu rutrum. Aenean rutrum cursus velit eu fermentum. Fusce tristique purus vitae dolor rutrum laoreet. Maecenas iaculis bibendum justo, 
+            ut suscipit nibh faucibus vel. Suspendisse feugiat urna quis gravida condimentum. 
+        </p>
+        <p>
+            Pellentesque eu metus orci. Sed tincidunt nisi consectetur, malesuada sem sed, 
+            cursus dolor. Suspendisse a accumsan velit, vel ullamcorper erat. Fusce tincidunt tortor sit amet eros tempor tincidunt. 
+            Maecenas enim purus, pretium sit amet mollis ac, sagittis ac ligula. Donec odio lectus, porttitor quis massa sed, 
+            imperdiet hendrerit eros. Vivamus quis tempor eros, et eleifend purus. Curabitur aliquet diam ullamcorper mauris maximus bibendum. 
+            Vestibulum sagittis risus at nisi ornare pharetra. Nullam sed placerat arcu.  
+        </p>
+        <p>
+            Quisque convallis elementum lacus, vitae elementum enim pellentesque vitae. 
+            Integer id neque et urna lobortis pharetra eu eu urna. Etiam quis condimentum enim. 
+            Sed id metus id orci vestibulum congue eget sed tortor. Cras tincidunt neque viverra porta luctus. 
+            Integer ultricies tortor ac enim accumsan, vitae tincidunt felis sollicitudin. Vestibulum leo metus, 
+            lacinia id porta ornare, euismod id magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. 
+            Ut et lorem mi. 
+        </p>
+    </div>
+    <div class="columna">   
+        <p>
+            Suspendisse at odio quis quam cursus dignissim et id mi. Aenean volutpat ut metus a auctor. 
+            Aliquam porta metus ex, ut gravida urna venenatis sed. Nam bibendum rhoncus ligula, at feugiat sapien. 
+            Aenean mattis lorem eget auctor dictum. Etiam est risus, mollis at nulla ac, scelerisque fermentum libero. 
+            Aenean dapibus enim malesuada risus finibus, vitae rhoncus justo elementum. Phasellus sapien felis, dapibus finibus nisi sit amet, 
+            euismod placerat nisi. Pellentesque maximus turpis eu erat congue scelerisque. Nullam eros purus, iaculis a finibus sed, rhoncus eu elit. 
+            Vivamus diam justo, tincidunt ut nibh eu, venenatis tincidunt odio. 
+        </p>
+        <p>
+            Praesent dictum justo et ex consectetur tincidunt. Nullam et nibh pulvinar lectus pharetra sodales maximus at augue. 
+            Integer elementum nulla elit, vitae luctus est semper sed. Mauris sed vulputate velit. Donec mollis magna dui, vel vestibulum nulla tincidunt mattis. 
+            Praesent nec urna nec urna bibendum gravida eget at ante. Pellentesque nisi purus, ultricies a sollicitudin at, posuere ac diam. Duis arcu urna, 
+            hendrerit nec ex non, pellentesque mollis tellus. Duis semper dui sed nisi condimentum malesuada. 
+            Proin sit amet enim tristique, maximus velit eu, iaculis tellus. Ut eu facilisis leo, ac rutrum sem. 
+            Donec iaculis pulvinar nulla vel pellentesque. Morbi nec tortor ex. 
+        </p>
+    </div>
+    </div>
+    <div>
+        <form  id="formulario">
+            <label for="name">Nombre:</label><br>
+            <input type="text" id="name"><br>
+            <label for="email">email:</label><br>
+            <input type="text" id="email"><br>
+            <span id="mensaje-error"></span><br>
+            <label for="parrafo">parrafo:</label><br>
+            <textarea id="parrafo" cols="40" rows="5"></textarea><br>
+            <input type="button" value="Añadir párrafo" onclick="leerParrafo()">
+            <input type="text" id="busqueda">
+            <input type="button" value="Bucar" onclick="busquedaEnTexto()">
+            <input type="button" value="Contar palabras" onclick="conteoPalabras()">
+        </form>
+    </div>
+    
+    <div id="visitas"></div>
+    <script>
+        //RETO 3
+        /*
+        function busquedaEnTexto(){
+            let texto = prompt("Buscar la palabra");
+            if(texto){
+                window.find(texto);
+            }
+        }
+            */
+
+        //RETO4
+        function busquedaEnTexto() {
+            // Obtener el texto buscado
+            let texto = document.getElementById("busqueda").value;
+            let contenido = document.getElementById("contenido");
+            if(texto != ""){
+                // Buscar coincidencias y resaltarlas
+                let regex = new RegExp(`(${texto})`, 'gi');
+                let coincidencias = contenido.innerHTML.match(regex);
+
+                if (coincidencias) {
+                    // Resaltar todas las coincidencias
+                    contenido.innerHTML = contenido.innerHTML.replace(regex, '<mark>$1</mark>');
+                    // Hacer scroll hasta la primera coincidencia
+                    document.querySelector("mark").scrollIntoView({ behavior: "smooth", block: "center" });
+                }
+            }
+
+            
+        }
+
+        //RETO 5
+        function conteoPalabras() {
+            // Obtener el contenedor de contenido
+            let contenido = document.getElementById("contenido");
+
+            // Obtener el texto dentro de los párrafos
+            let texto = contenido.innerText;
+
+            // Dividir el texto por espacios y filtrar palabras vacías
+            let palabras = texto.split(/\s+/).filter(palabra => palabra.trim().length > 0);
+
+            // Contar las palabras
+            let totalPalabras = palabras.length;
+
+            // Mostrar el resultado en un elemento nuevo o existente
+            let resultado = document.getElementById("resultado-palabras");
+            if (!resultado) {
+                resultado = document.createElement("p");
+                resultado.id = "resultado-palabras";
+                document.body.appendChild(resultado);
+            }
+            resultado.textContent = `El texto contiene un total de ${totalPalabras} palabras.`;
+}
+
+
+
+        function validadorCorreo(correo){
+            let regExp = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            let resultado = regExp.exec(correo);
+            if(resultado != null){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        function leerParrafo(){
+            let correo = document.getElementById("email").value;
+            let parrafo = document.getElementById("parrafo").value;
+            let mensajeError = document.getElementById("mensaje-error");
+            if(validadorCorreo(correo)){
+                // Si es válido, ocultamos el mensaje de error
+                mensajeError.style.display = "none";
+                anaydeParrafo(parrafo);
+            }else{
+                mensajeError.style.display = "inline";
+                mensajeError.textContent = "* El email no es correcto";
+            }
+        }
+        function anaydeParrafo(parrafo){
+            let textoParrafo1 = document.createTextNode(parrafo);
+            let nuevoParrafo1 = document.createElement("p");
+            nuevoParrafo1.appendChild(textoParrafo1);
+            nuevoParrafo1.style.color = "red";
+            nuevoParrafo1.style.fontWeight = "bold";
+            document.getElementsByClassName("columna")[0].appendChild(nuevoParrafo1);
+
+            let textoParrafo2 = document.createTextNode(parrafo);
+            let nuevoParrafo2 = document.createElement("p");
+            nuevoParrafo2.appendChild(textoParrafo2);
+            nuevoParrafo2.style.color = "green";
+            nuevoParrafo2.style.fontWeight = "bold";
+            document.getElementsByClassName("columna")[1].appendChild(nuevoParrafo2);
+            
+
+            //Poner el nombre en el inicio
+            let nombreUsuario = document.getElementById("name").value;
+            let nombreUsuarioNodo = document.createTextNode(`¡Bienvenid@! ${nombreUsuario}`);
+            let elemento = document.createElement("p");
+            elemento.appendChild(nombreUsuarioNodo);
+            //Nodo padre
+            let padre = document.getElementById("contenedorSaludo");
+            //Nodo hijo
+            let hijo = document.getElementById("saludo");
+            //Atributo id al elemento
+            elemento.setAttribute("id","saludo");
+            //remplazo el hijo por el elemento nuevo
+            padre.replaceChild(elemento, hijo);
+
+            //Tambien se puede hacer añadiendo el elemento al padre y borrando el hijo
+            //Al borrar solo el primer nodo que encuentra con el atributo id siempre se queda el ultimo nodo hijo creado.
+                //padre.appendChild(elemento);
+                //padre.removeChild(hijo);
+            
+        }
+
+        
+
+        //COOKIES
+        function obtenerCookie(nombre) {
+            const cookies = document.cookie.split("; ");
+            for (let cookie of cookies) {
+                const [clave, valor] = cookie.split("=");
+                if (clave === nombre) return valor;
+            }
+            return null;
+        }
+
+        // Función para gestionar las visitas
+        function gestionarVisitas() {
+            const visitasDiv = document.getElementById("visitas");
+
+            // Mostrar alerta para aceptar o rechazar cookies
+            const aceptarCookies = confirm("¿Aceptas el uso de cookies para contar las visitas?");
+            if (aceptarCookies) {
+                let visitas = obtenerCookie("visitas") || 0; // Obtener visitas de la cookie
+                visitas = parseInt(visitas) + 1; // Incrementar el contador
+                document.cookie = `visitas=${visitas}; path=/; max-age=${60 * 60 * 24 * 365}`; // Guardar cookie con 1 año de duración
+                visitasDiv.textContent = `Esta página ha sido visitada ${visitas} veces.`;
+            } else {
+                visitasDiv.textContent = "No se registrarán visitas porque rechazaste las cookies.";
+            }
+        }
+
+        // Ejecutar al cargar la página
+        window.onload = function () {
+            document.getElementById("formulario").reset();
+            gestionarVisitas();
+        };
+    
+    </script>
+</body>
+</html>
