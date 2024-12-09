@@ -99,6 +99,8 @@
             <input type="button" value="Bucar" onclick="busquedaEnTexto()">
             <input type="button" value="Contar palabras" onclick="conteoPalabras()">
             <input type="button" value="Ejercicio6" onclick="mostrarParrafos()">
+            <input type="button" value="Ejercicio7" onclick="invertirParrafos()">
+
         </form>
     </div>
     <p id="contador"></p>
@@ -170,6 +172,16 @@
                 }
             },2000);
             
+        }
+
+        //RETO7
+        function invertirParrafos(){
+            let columnas = document.querySelectorAll(".columna");
+            columnas.forEach(columna => {
+                const parrafos = Array.from(columna.children);
+                const parrafosInvertidos = parrafos.reverse();
+                parrafos.forEach(parrafos => columna.appendChild(parrafos));
+            });
         }
 
         function validadorCorreo(correo){
