@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Adopta un Animal</h1>
+    <form action="">
+        <!--Elegir animal-->
+        <label for="ElegirAnimal">Elige el tipo de animal: 
+            <select name="" id="">
+                <option value="perro">perro</option>
+                <option value="gato">Gato</option>
+            </select>
+            <input type="button" value="Mostrar Animal">
+    </label>
+    </form>
+</body>
+<script>
+    class Animal{
+        constructor(nombre,edad,foto){
+            this.nombre = nombre;
+            this.edad = edad;
+            this.foto = foto;
+        }
+
+        info(){
+            return `Nombre: ${nombre}, tipo:${tipo}, edad:${edad}`;
+        }
+    }
+
+    class Perro extends Animal{
+        constructor(raza){
+            super(nombre,edad,foto);
+            this.raza = raza;
+        }
+        
+    }
+
+    class Gato extends Animal{
+        constructor(color){
+            super(nombre,edad,foto);
+            this.color = color;
+        }
+
+    }
+
+</script>
+</html>

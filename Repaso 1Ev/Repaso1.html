@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="zoomIn">Zoom ++</button>
+    <button id="zoomOut">Zoom --</button>
+    <div id="contenido">
+        <p>
+            Suspendisse at odio quis quam cursus dignissim et id mi. Aenean volutpat ut metus a auctor. 
+            Aliquam porta metus ex, ut gravida urna venenatis sed. Nam bibendum rhoncus ligula, at feugiat sapien. 
+            Aenean mattis lorem eget auctor dictum. Etiam est risus, mollis at nulla ac, scelerisque fermentum libero. 
+            Aenean dapibus enim malesuada risus finibus, vitae rhoncus justo elementum. Phasellus sapien felis, dapibus finibus nisi sit amet, 
+            euismod placerat nisi. Pellentesque maximus turpis eu erat congue scelerisque. Nullam eros purus, iaculis a finibus sed, rhoncus eu elit. 
+            Vivamus diam justo, tincidunt ut nibh eu, venenatis tincidunt odio. 
+        </p>
+        <p>
+            Praesent dictum justo et ex consectetur tincidunt. Nullam et nibh pulvinar lectus pharetra sodales maximus at augue. 
+            Integer elementum nulla elit, vitae luctus est semper sed. Mauris sed vulputate velit. Donec mollis magna dui, vel vestibulum nulla tincidunt mattis. 
+            Praesent nec urna nec urna bibendum gravida eget at ante. Pellentesque nisi purus, ultricies a sollicitudin at, posuere ac diam. Duis arcu urna, 
+            hendrerit nec ex non, pellentesque mollis tellus. Duis semper dui sed nisi condimentum malesuada. 
+            Proin sit amet enim tristique, maximus velit eu, iaculis tellus. Ut eu facilisis leo, ac rutrum sem. 
+            Donec iaculis pulvinar nulla vel pellentesque. Morbi nec tortor ex. 
+        </p>
+        <p>
+            Suspendisse at odio quis quam cursus dignissim et id mi. Aenean volutpat ut metus a auctor. 
+            Aliquam porta metus ex, ut gravida urna venenatis sed. Nam bibendum rhoncus ligula, at feugiat sapien. 
+            Aenean mattis lorem eget auctor dictum. Etiam est risus, mollis at nulla ac, scelerisque fermentum libero. 
+            Aenean dapibus enim malesuada risus finibus, vitae rhoncus justo elementum. Phasellus sapien felis, dapibus finibus nisi sit amet, 
+            euismod placerat nisi. Pellentesque maximus turpis eu erat congue scelerisque. Nullam eros purus, iaculis a finibus sed, rhoncus eu elit. 
+            Vivamus diam justo, tincidunt ut nibh eu, venenatis tincidunt odio. 
+        </p>
+    </div>
+</body>
+<script>
+    let zoomInButton = document.getElementById("zoomIn");
+    let zoomOutButton = document.getElementById("zoomOut");
+    let contenido = document.getElementById("contenido");
+    let zoomLevel = 16;
+    zoomInButton.addEventListener("click", () => {
+        zoomLevel += 1;
+        contenido.style.fontSize = `${zoomLevel}px`;
+    });
+    zoomOutButton.addEventListener("click", () => {
+        zoomLevel -= 1;
+        contenido.style.fontSize = `${zoomLevel}px`;
+    });
+</script>
+</html>

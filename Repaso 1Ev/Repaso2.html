@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            color: white; 
+            background-color: red; 
+            padding-left: 10px; 
+            text-align: left;
+            margin-right: 69%;
+        }
+        #titulo{
+            width: 60em;
+        }
+    </style>
+</head>
+<body>
+    <div id="titulo">
+        <h1>MENU NAVIDEÑO</h1>
+    </div>
+    <form action="" id="formulario">
+        <fieldset>
+            <legend>Entrantes</legend>
+            <p>Escoge el/los entrantes que desees.</p>
+            <label><input type="checkbox" name="entrante" value="Ensalada especial 10€">Ensalada especial</label><br>
+            <label><input type="checkbox" name="entrante" value="Jamon Iberico 10€">Jamon Iberico</label>
+        </fieldset>
+        <fieldset>
+            <legend>Sesgundo plato</legend>
+            <p>Escoge un segundo plato.</p>
+            <label><input type="radio" name="segundo" checked value="Pavo trufado 10€">Pavo trufado</label><br>
+            <label><input type="radio" name="segundo" value="Salmón al cava 10€">Salmón al cava</label>
+        </fieldset>
+        <fieldset>
+            <legend>Postre</legend>
+            <p>Escoge el poster deseado</p>
+            <select name="" id="">
+                <optgroup label="Con lactosa">
+                    <option name="postre" value="Tarta de queso 5€">Tarta de queso</option>
+                    <option name="postre" value="Coulant de chocolate 5€">Coulant de chocolate</option>
+                </optgroup>
+                <optgroup label="Sin lactosa">
+                    <option name="postre" value="Macedonia 5€">Macedonia</option>
+                    <option name="postre" value="Sorbete de limón con cava 5€">Sorbete de limón con cava</option>
+                </optgroup>
+            </select>
+        </fieldset>
+        <input type="button" value="Pedir el menu" id="pedirMenu" onclick="pedirCuenta()">
+        <input type="button" value="Borrar" id="borrarButton" onclick="borrarForm()">
+
+    </form>
+    <div id="menuSeleccionado"></div>
+
+</body>
+<script>
+    //Funcion para borrar el menu
+    function borrarForm(){
+        document.getElementById("formulario").reset();
+    };
+    function pedirCuenta(){
+        let total = 0;
+        let selectedMenu = "";
+    
+
+        //Entrantes
+        const checkboxs = document.querySelectorAll(
+            "input[name='entrante']:checked"
+        );
+
+        checkboxs.forEach(function (checkbox){
+            selectedMenu += `<p>${checkbox.value}</p>`;
+            console.log("hola");
+        });
+
+        //Segundos
+        const segundos = document.querySelectorAll(
+            "input[name='segundo']:checked"
+        );
+
+        segundos.forEach(function (checkbox){
+            selectedMenu += `<p>${checkbox.value}</p>`;
+        });
+
+        //postres
+        const postre = document.querySelector("option[name='postre']:checked").value;
+        selectedMenu += `<p>${postre}</p>`;
+
+        const menuSeleccionado = document.getElementById("menuSeleccionado");
+        menuSeleccionado.innerHTML = selectedMenu;
+    }
+
+</script>
+</html>
