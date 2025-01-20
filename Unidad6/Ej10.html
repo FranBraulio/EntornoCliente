@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capa con Scroll</title>
+    <style>
+        #capa {
+        position: fixed;
+        width: 50%;
+        height: 50%;
+        left: 25%;
+        top: 25%;
+        border: 1px solid black;
+        overflow: auto; 
+    }
+
+    #boton {
+        position: fixed;
+        width: 200px;
+        height: 100px; 
+        bottom: 20px; 
+        left: 50%;
+        transform: translateX(-50%);
+        display: none;
+        text-align: center;
+        color: white; 
+        border-radius: 10px; 
+    }
+
+    #boton button {
+        height: 50px;
+        width: 80%;
+        margin-top: 25px;
+        cursor: pointer;
+    }
+
+    </style>
+</head>
+<body>
+
+<div id="capa">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde cum optio sapiente corporis minus facilis adipisci doloremque autem. Cumque nisi minima quibusdam, unde autem sint doloremque est laborum rerum hic.</p>
+    <p>Inventore, officia distinctio optio dicta iste eaque, sint ea, eum neque quae dolorem quia! Blanditiis laboriosam distinctio harum! Optio animi illo, alias rem eligendi distinctio explicabo blanditiis expedita voluptatibus omnis?</p>
+    <p>A, hic! Excepturi vel esse animi voluptas ut, temporibus vero. In consequatur fuga possimus facere, esse rerum. Illum dolorem distinctio dolore atque magnam! Dolorum possimus delectus illum optio ut sint?</p>
+    <p>Consectetur aliquam quisquam laborum quis dolorum ipsam sunt iste ullam, error maxime libero quidem fuga corporis dignissimos accusantium magni rerum odio recusandae vel ratione veniam, pariatur suscipit tempore. Natus, cupiditate.</p>
+    <p>Laborum reprehenderit debitis voluptatem aspernatur sit perferendis, fugit ex, itaque odit consequuntur velit atque saepe nobis! Dolor optio temporibus inventore aliquam repellendus fugiat, debitis reprehenderit deserunt obcaecati voluptatibus quod? Inventore.</p>
+    <p>Aut quo ipsa, aliquam qui reiciendis temporibus laudantium saepe totam eligendi. Enim quod, illum, praesentium recusandae incidunt laudantium molestias dignissimos quidem harum tenetur quae, reprehenderit labore quam ratione libero accusantium.</p>
+    <p>Dolorem tempore dignissimos facilis voluptate consectetur harum est ad eveniet nulla, ipsa fugiat blanditiis vel modi, veniam consequuntur voluptatum, voluptatibus nemo alias suscipit deleniti repellat at hic. Libero, a voluptas?</p>
+    <p>Dolorem temporibus animi ab asperiores corporis, quis voluptatem earum odit eum molestias non dolore at quae suscipit eius repudiandae sequi. Dolore vel suscipit porro atque recusandae saepe sapiente exercitationem mollitia.</p>
+    <p>Optio repellendus aliquid, recusandae libero id doloribus. Sed a error dolorum labore facere eum officia numquam nulla sint corrupti quibusdam et laudantium veniam, quis aut doloremque non mollitia sequi alias?</p>
+    <p>Suscipit impedit totam facilis aliquam similique fugit dolore, veniam quisquam reiciendis, blanditiis, nisi laudantium. Rem itaque ducimus quam illum minima, unde soluta sed excepturi, laboriosam reiciendis aspernatur, alias voluptatem placeat!</p>    
+</div>
+
+<div id="boton">
+    <button onclick="cerrarCapa()">Cerrar</button>
+</div>
+
+<script>
+    const capa = document.getElementById('capa');
+    const boton = document.getElementById('boton');
+
+    // Verificar si se llegó al final del desplazamiento
+    capa.addEventListener('scroll', () => {
+        const { scrollTop, scrollHeight, clientHeight } = capa;
+        if (scrollTop + clientHeight >= scrollHeight) {
+            boton.style.display = 'block';
+        }
+    });
+
+    // Función para cerrar la capa
+    function cerrarCapa() {
+        capa.remove();
+        boton.remove();
+    }
+</script>
+
+</body>
+</html>
