@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Validation</title>
+</head>
+<body>
+    <form id="emailForm">
+        <label for="email">Correo Electrónico:</label>
+        <input type="email" id="email" required>
+
+        <label for="ConfirmarEmail">Repetir Correo Electrónico:</label>
+        <input type="email" id="ConfirmarEmail" required>
+
+        <button type="submit">Validar</button>
+        <div id="message" class="error"></div>
+    </form>
+
+    <script>
+        const emailInput = document.getElementById('email');
+        const ConfirmarEmailInput = document.getElementById('ConfirmarEmail');
+        const form = document.getElementById('emailForm');
+        const messageDiv = document.getElementById('message');
+
+        const emailRegex = /^[a-zA-Z][^@]*@[a-zA-Z]+\.[a-zA-Z]{2,3}$/;
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const email = emailInput.value.trim();
+            const ConfirmarEmail = ConfirmarEmailInput.value.trim();
+
+            if (!emailRegex.test(email)) {
+                messageDiv.textContent = 'El correo electrónico no es válido. Asegúrate de cumplir los requisitos.';
+                return;
+            }
+
+            if (email !== ConfirmarEmail) {
+                messageDiv.textContent = 'Los correos electrónicos no coinciden.';
+                return;
+            }
+
+            messageDiv.textContent = '¡El correo electrónico es válido y coincide!';
+            messageDiv.style.color = 'green';
+        });
+
+        //Vetas la accion de pegar
+        ConfirmarEmailInput.addEventListener("paste", (e) => {
+            e.preventDefault(); // Evita que el contenido sea pegado
+        });
+
+        //Vetas las teclas
+        ConfirmarEmailInput.addEventListener("keydown", (e) => {
+        if (e.ctrlKey && e.key === "v") {
+            e.preventDefault(); // Evita que el contenido sea pegado
+        };
+});
+
+    </script>
+</body>
+</html>

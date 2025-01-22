@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form name="formulario" action="procesa_datos.php" method="POST">
+        Introduzca una edad mayor de 10 y menor de 65:
+        <input type="text" name="edad" placeholder="Edad" value="" />
+        <input type="submit" name="submit" value="Enviar" />
+    </form>
+    
+    <div id="errores"></div>
+    <script>
+        let formEdad = document.forms[0];
+let errores= document.getElementById("errores");
+
+formEdad.addEventListener("submit", (ev) =>{
+    // Obtenemos el valor que el usuario ha introducido en el campo edad.
+    let edad = parseInt(document.forms[0].elements["edad"].value);
+
+    if(edad<=18 || edad >=65){
+        // Cancelamos el envío porque no cumple los requisitos
+        ev.preventDefault();
+        errores.innerHTML = "La edad debe ser > 18 y < 65";
+    }
+
+});
+
+    </script>
+</body>
+</html>
