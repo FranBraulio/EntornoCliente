@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and Drop App</title>
+    <style>
+        .layer {
+            width: 200px;
+            height: 100px;
+            border: 1px solid black;
+        }
+
+        #arrastrable {
+            background-color: yellow;
+        }
+
+        #dropzone {
+            background-color: white;
+            margin-top: 20px;
+        }
+
+        #arrastrable.arrastrando {
+            opacity: 0.5;
+        }
+
+        #destino.over {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="arrastrable" class="layer" draggable="true">Soy arrastrable</div>
+    <div id="destino" class="layer">Soy el destino</div>
+
+    <script>
+        const arrastrable = document.getElementById('arrastrable');
+        const destino = document.getElementById('destino');
+
+        arrastrable.addEventListener('dragstart', () => {
+            arrastrable.classList.add('arrastrando');
+        });
+
+        arrastrable.addEventListener('dragend', () => {
+            arrastrable.classList.remove('arrastrando');
+        });
+
+        destino.addEventListener('dragover', (event) => {
+            event.preventDefault(); // Allow dropping
+            destino.classList.add('over');
+        });
+
+        destino.addEventListener('dragleave', () => {
+            destino.classList.remove('over');
+        });
+
+        destino.addEventListener('drop', () => {
+            destino.classList.remove('over');
+            arrastrable.style.display = 'none';
+            destino.textContent = '¡Lo has logrado!';
+            destino.style.backgroundColor = "green";
+        });
+    </script>
+</body>
+</html>
